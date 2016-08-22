@@ -1,0 +1,45 @@
+<% provide(:title, 'Chat') %>
+<h1>Chat</h1>
+
+<div>
+<div class="menu">
+    <%= render 'shared/menu' %>
+</div>
+
+<div class="posts">
+<div class="row">
+<div class="col-md-6 col-md-offset-2"
+    <section class="user_post_info">
+      <h1>
+        <%= image_tag @current_user.avatar.url(:thumb) %>
+        <%= @current_user.name %>
+      </h1>
+   
+        <%= render 'post_form' %>
+
+    </section>
+    
+ </div>
+
+<div class="col-md-8">
+
+	<% if @course.posts.any? %>
+		<ol class="posts">
+		<% @course.posts.each do |course| %><br>
+			<li id="post-<%= course.id %>">
+			<span class="gravatar"> <%= image_tag course.user.avatar.url(:thumb) %></span>
+  			<span class="user"><b><%= course.user.name %></b></span>
+  			<span class="content"><%= course.content %></span>
+  			<span class="timestamp">
+    			Posted <%= course.created_at.to_s(:short) %>
+  			</span>
+			</li>
+		<% end %>
+		</ol>
+		<%= will_paginate @posts %>
+	<% else %>
+			<%= ' ' %>
+	<% end %>
+
+</div>
+</div>

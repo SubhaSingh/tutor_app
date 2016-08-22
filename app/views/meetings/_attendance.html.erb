@@ -1,0 +1,12 @@
+<div class="attendance">
+<% if meeting.meeting_members.include?(meeting.meeting_members.find_by_user_id(@current_user.id)) %>
+    <%= form_for( [@course, meeting.id, @meeting_member], html: {method: :delete}, url:  course_meeting_meeting_member_path(@course, meeting.id, MeetingMember.find_by_user_id(@current_user.id)) ) do  |f| %>
+  		<%= f.submit "Miss?", class: "btn btn-danger" %>
+	<% end %>
+  <% else %>
+    <%= form_for([@course, meeting.id, @meeting_member],
+    	url: course_meeting_meeting_members_path(@course, meeting.id)) do |f| %>
+  		<%= f.submit "Attend?", class: "btn btn-success" %>
+	<% end %>
+ <% end %>
+</div>

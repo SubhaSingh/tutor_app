@@ -1,0 +1,2 @@
+$(".attendance").html("<%= escape_javascript(render partial: 'meetings/attendance', locals: { meeting: @meeting}) %>");
+$(".attending").html("<%= @meeting.meeting_members%>");

@@ -1,0 +1,3 @@
+<%= form_for( [@course, meeting.id, @meeting_member], html: {method: :delete}, url:  course_meeting_meeting_member_path(@course, meeting.id, MeetingMember.find_by_user_id(@current_user.id)), remote: true ) do  |f| %>
+  		<%= f.submit "Miss?", class: "btn btn-danger" %>
+<% end %>

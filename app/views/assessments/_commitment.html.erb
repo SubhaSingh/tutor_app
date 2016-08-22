@@ -1,0 +1,11 @@
+
+<% if assessment.assessment_tutors.include?(assessment.assessment_tutors.find_by_user_id(@current_user.id)) %>
+    <%= form_for( [@course, assessment.id, @assessment_tutor], html: {method: :delete}, url:  course_assessment_assessment_tutor_path(@course, assessment.id, AssessmentTutor.find_by_user_id(@current_user.id)) ) do  |f| %>
+  		<%= f.submit "Miss?", class: "btn btn-danger" %>
+	<% end %>
+  <% else %>
+    <%= form_for([@course, assessment.id, @assessment_tutor],
+    	url: course_assessment_assessment_tutors_path(@course, assessment.id)) do |f| %>
+  		<%= f.submit "Commit?", class: "btn btn-success" %>
+	<% end %>
+ <% end %>

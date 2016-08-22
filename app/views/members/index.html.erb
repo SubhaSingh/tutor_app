@@ -1,0 +1,71 @@
+<%= provide(:title, "Members") %>
+<h1>
+  <%= @course.name %> Members 
+</h1>
+
+<div>
+<div class="menu">
+		<%= render 'shared/menu' %>
+</div>
+<style>
+ 	h3 {
+ 		font-size: 1.8em;
+	letter-spacing: -1.5px;
+	margin-bottom: 30px;
+	font-weight: normal;
+    text-align: left;
+    color: black;
+  	}
+  	h2{
+  		font-size: 1.2em;
+		letter-spacing: -1px;
+		margin-bottom: 30px;
+		font-weight: normal;
+		color: #777;
+    	text-align: left;
+    }
+</style>
+<div class="members">
+	<h3>Course Convenor :</h3>
+	<h2>
+	<p><%= User.find_by_id(@course.convenor.user_id).name %><%= ' - ' %><%= User.find_by_id(@course.convenor.user_id).email %></p>
+	</h2>
+	
+	<h3>Course Lecturers :</h3>
+	<h2>
+		<% if @course.lecturers.any? %>
+			<% @course.lecturers.each do |lecturer| %>
+			<p><%= User.find_by_id(lecturer.user_id).name %><%= ' - ' %><%= User.find_by_id(lecturer.user_id).email %>
+
+			<% if course_convenor?(@current_user, @course) %>
+				| <%= link_to 'delete', delete_lecturer_course_members_path(@course) %>
+			<div class="button"></p>
+				<%= link_to 'Change role to Tutor', tutor_course_members_path(@course, lecturer), class: "btn btn-success" %></div>
+			<% end %>
+			<% end %>
+		<% else %>
+		<%= "None." %>
+		<% end %>
+	</h2>
+
+	<h3>Course Tutors :</h3>
+	<h2>
+		<% if @course.tutors.any? %>
+			<% @course.tutors.each do |tutor| %>
+			<p><%= User.find_by_id(tutor.user_id).name %><%= ' - ' %><%= User.find_by_id(tutor.user_id).email %>
+			<% if course_convenor?(@current_user, @course) %>
+				| <%= link_to 'delete', delete_tutor_course_members_path(@course) %>
+			<div class="button"></p>
+				<%= link_to 'Change role to Lecturer', lecturer_course_members_path(@course, tutor) , class: "btn btn-success" %></div>
+			<% end %>
+			<% end %>
+		<% else %>
+		<%= "None." %>
+		<% end %>
+	</h2>
+	<% if course_convenor?(@current_user, @course) || course_lecturer?(@current_user, @course) %>
+		<%= link_to 'Invite', new_course_invite_path(@course), class: 'btn btn-primary' %>
+	<% end %>
+</div>	
+</div>
+

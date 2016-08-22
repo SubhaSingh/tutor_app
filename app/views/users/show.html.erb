@@ -1,0 +1,13 @@
+<% provide(:title, @user.name) %>
+<h1>Profile</h1>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+        <%= image_tag @user.avatar.url(:medium) %>
+       <h1>  
+        <%= @user.name %>
+      </h1>
+    </section>
+  </aside>
+</div><br><br>
+<span style="font-size: 150%;"><%= link_to "Dashboard", dashboard_path %></span><br><br>

@@ -1,0 +1,70 @@
+<%= provide(:title, 'Assessments') %>
+
+
+<h1>Assessments</h1> 
+
+	<div class="menu">
+		<%= render 'shared/menu' %>
+	</div>
+
+<% if @course.assessments.any? %>
+	<ol class="assessments"> 
+		<% @course.assessments.each do |assessment| %>
+			<li class="dropdown">
+                        <br><%= link_to assessment.name, course_assessment_path(@course, assessment.id) %> 
+            		<a href= 'view' class="dropdown-toggle" data-toggle="dropdown">
+            			
+            		     <b class="caret red"></b>
+            		</a>
+            			<span class="created"><%= "Created by: " %><%= User.find_by_id(assessment.user_id).name %></span>
+            		<ul class="dropdown-menu">
+            		<span><li><b><%= "Date : "%></b><%=  assessment.date %></li>
+            			<li><b><%= "Start time : "%></b><%= assessment.starttime.to_s(:time) %></li>
+            			<li><b><%= "End time : "%></b><%=  assessment.endtime .to_s(:time)%></li>
+            			<li><b><%= "Venue : "%></b><%=  assessment.venue %></li>
+            			<li class="divider"></li>
+            			<li>
+            				<b><%= "Notes :"%></b><%=  simple_format(assessment.notes) %>
+            			</li>
+            			<li class="divider"></li>
+            			<li>
+            				<b><%= "Tutors Committed :"%></b><br>
+                                    <% assessment.assessment_tutors.each do |tutor|  %>
+                                          <%= User.find_by_id(tutor.user_id).name %><br>
+                                    <% end %>
+            			</li>
+            			</span>
+            		</ul>
+            	</li>
+                  <div class="col-md-2">
+            	 <%= render partial: 'commitment', locals: { assessment: assessment } %>
+            	</div> 
+                   <% if @current_user.id == assessment.user_id %>
+            		| <%= link_to "edit", edit_course_assessment_path(@course, assessment.id) %>
+            		| <%= link_to "delete", course_assessment_path(@course, assessment.id), method: :delete, data: { confirm: "Are you sure you want to delete this course ?"} %><br>
+            	 <% end %><br>
+
+            <% end %><br><br>
+             </ol>
+            
+           
+
+		<%= will_paginate @many_assessments %>
+
+	<% else %><br><br>     
+      	<span style="margin-left: 300px; font-size: 14pt;"><%= "No assessments." %></span>
+  <% end %><br><br>
+
+
+       <span style="margin-left: 300px;"><% if !course_tutor?(@current_user, @course) %>
+                <%= link_to "New Assessment", new_course_assessment_path(@course), class: 'btn btn-primary' %></span>
+             <% end %>
+
+
+
+<style>
+  .created{
+      margin-left: 10px;
+      font-size: 0.8em;
+  }
+</style>

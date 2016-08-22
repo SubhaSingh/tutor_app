@@ -1,0 +1,33 @@
+<!-- code reference: http://www.menucool.com/vertical/vertical-menu -->
+<link href="/(directory)/menu-vertical.css" rel="stylesheet" type="text/css" />
+<script src="/assets/menu-vertical.js" type="text/javascript"></script>
+
+
+<div class="menu">
+<class id="forward">
+<ul id="menu-v">
+    <li>
+        <%= link_to 'Tutor Information',  course_tutor_informations_path(@course) %>
+    </li>
+    <li>    
+        <%= link_to 'Solutions', course_solutions_path(@course) %>
+    </li>
+    <li>
+        <%= link_to 'Assessments', course_assessments_path(@course) %>
+
+    </li>
+    <li>
+        <%= link_to 'Meetings', course_meetings_path(@course) %>
+
+    </li>
+    <li>
+        <%= link_to 'Chat', course_posts_path(@course) %>
+    </li>
+    <li>    
+        <%= link_to 'Members', course_members_path(@course) %>
+        
+    </li>
+    
+</ul>
+</class>
+</div>

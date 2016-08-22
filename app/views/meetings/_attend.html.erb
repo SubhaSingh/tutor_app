@@ -1,0 +1,4 @@
+ <%= form_for([@course, meeting.id, @meeting_member],
+    	url: course_meeting_meeting_members_path(@course, meeting.id), remote: true) do |f| %>
+  		<%= f.submit "Attend?", class: "btn btn-success" %>
+<% end %>

@@ -1,0 +1,45 @@
+<%= provide(:title, @course.name) %>
+<h1>
+  <%= @course.name %>
+</h1>
+<h2>
+	<p> Created by: <%= @convenor.name %></p>
+</h2>
+<style>
+	h1 {
+	font-size: 3em;
+	letter-spacing: -2px;
+	margin-bottom: 30px;
+	text-align: center;
+}
+
+h2 {
+	font-size: 1.2em;
+	letter-spacing: -1px;
+	margin-bottom: 30px;
+	text-align: center;
+	font-weight: normal;
+	color: #777;
+}
+</style>
+
+<h1>Tutor Information</h1> 
+<div>
+	<div class="menu">
+		<%= render 'shared/menu' %>
+	</div>
+
+	<div class="tutor_info">
+		<%if @info.content != nil %>
+			<%= simple_format(@info.content) %><br>
+			<p>Last updated: <%= User.find_by_id(@info.user_id).name %>
+			<%= @info.created_at.to_s(:short) %></p>
+		<% end %>
+		<% if course_convenor?(@current_user, @course) || course_lecturer?(@current_user, @course)  %>
+				<%= link_to "Update", new_course_tutor_information_path(@course), class: "btn btn-success" %>
+			
+		<% end %>
+	</div>
+</div>
+
+

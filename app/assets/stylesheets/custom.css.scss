@@ -1,0 +1,598 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "bootstrap-timepicker";
+
+/* mixins, variables, etc. */
+
+$light-gray: #777;
+$SlateBlue:  #6A5ACD;
+$medium-gray: #eaeaea;
+
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
+/* Universal */
+
+body {
+	padding-top: 60px;
+}
+
+section {
+	overflow: auto;
+}
+
+textarea {
+	resize: vertical;
+}
+.center {
+	text-align: center;
+	 h1 {
+		margin-bottom: 10px;
+	}
+}
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+	line-height: 1;
+}
+
+h1 {
+	font-size: 3em;
+	letter-spacing: -2px;
+	margin-bottom: 30px;
+	text-align: center;
+}
+
+h2 {
+	font-size: 1.2em;
+	letter-spacing: -1px;
+	margin-bottom: 30px;
+	text-align: center;
+	font-weight: normal;
+	color: $light-gray;
+}
+
+h3 {
+	font-size: 1.8em;
+	letter-spacing: -1.5px;
+	margin-bottom: 30px;
+	text-align: center;
+	font-weight: normal;
+	color: $light-gray;
+}
+
+p {
+	font-size: 1.1em;
+	line-height: 1.7em;
+}
+
+/* footer */
+
+footer {
+  margin-bottom: 0px;
+  margin-top: 280px;
+  padding-top: 5px;
+  border-top: 1px solid #6CB5FF;
+  color: $light-gray;
+  position: relative;
+
+}
+
+footer a {
+  color: #555;
+}
+
+footer a:hover {
+  color: #222;
+}
+
+footer small {
+  float: left;
+}
+
+footer ul {
+  float: right;
+  list-style: none;
+}
+
+footer ul li {
+  float: left;
+  margin-left: 15px;
+}
+
+/* miscellaneous */
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
+}
+
+/* sidebar */
+
+aside {
+  section.user_info {
+    margin-top: 20px;
+  }
+  section {
+    padding: 10px 0;
+    margin-top: 20px;
+    &:first-child {
+      border: 0;
+      padding-top: 0;
+    }
+    span {
+      display: block;
+      margin-bottom: 3px;
+      line-height: 1;
+    }
+    h1 {
+      font-size: 2em;
+      text-align: left;
+      letter-spacing: -1px;
+      margin-bottom: 3px;
+      margin-top: 20px;
+    }
+  }
+}
+
+.gravatar {
+  float: middle;
+  margin-right: 10px;
+}
+
+.gravatar_edit {
+  margin-top: 15px;
+}
+
+/* forms */
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+
+input {
+  height: auto !important;
+}
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+}
+
+.checkbox {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+
+#session_remember_me {
+  width: auto;
+  margin-left: 0;
+}
+
+/* dashboard sidebar */
+
+aside {
+  section.course_info {
+  margin-top: 20px;
+  list-style: none;
+  }
+  section {
+    padding: 10px 0;
+    float: left;
+    margin-top: 50px;
+    &:first-child {
+      border: 0;
+      padding-top: 0;
+    }
+    span {
+      display: block;
+      margin-bottom: 3px;
+      line-height: 1;
+    }
+    
+    li{
+        float: left;
+        margin-left: 20px;
+	        
+        .course_name{
+    		display: inline;
+      	.course_delete_edit { 
+       		float: right;
+        	margin-left: 150px;
+        	font-size: 0.8em;
+     
+  }
+  }
+        }
+  
+    h2 {
+      font-size: 1.8em;
+      text-align: left;
+      letter-spacing: -1.2px;
+      margin-bottom: 10px;
+      margin-top: 10px;
+    }
+    h3 {
+      font-size: 2em;
+      text-align: left;
+      color: #000;
+      letter-spacing: -1px;
+      margin-bottom: 10px;
+      margin-top: 10px;
+    }
+    
+  .button {
+      margin-left: 20px;
+    }
+    }
+}
+
+
+
+#menu-v li, #menu-v a {zoom:1;} /* Hacks for IE6, IE7 */
+#menu-v, #menu-v ul
+{
+    width: 200px; /* Main Menu Item widths */
+    border: 1px solid #ccc;
+    border-top:none;
+    position: absolute; font-size:0;
+    list-style: none; margin: 0px; padding: 10px ; display:block;
+    z-index: 100;
+}
+                
+/* Top level menu links style
+---------------------------------------*/
+
+#menu-v li
+{
+    background: #FFF url(bg.gif) repeat-x 0 2px;
+    list-style: none; margin: 10px; padding: 0px 10px 0px 10px;
+}
+#menu-v li a
+{
+    font: normal 16px Sans-serif;
+    border-top: 1px solid $light-gray;
+    display: block;
+    /*overflow: auto; force hasLayout in IE7 */
+    color: black;
+    text-decoration: none;
+    line-height:26px;
+    padding-left:20px;
+    padding-right: 0px;            
+
+}
+
+#menu-v li a:hover {
+      color: #6CB5FF;
+    }
+
+#menu-v li a:link {
+    color: #2E2E2E;
+}
+  
+/*code reference: http://www.menucool.com/vertical/vertical-menu*/
+
+#menu-v ul li a
+{
+    line-height:30px;
+    
+}
+ 
+
+#menu-v li a.arrow:hover
+{
+    background-image:url(arrowon.gif);
+    background-repeat: no-repeat;
+    background-position: 97% 50%;
+}
+        
+
+/* home page background*/
+
+.menu {
+  float: left;
+
+  margin-left: 10px;
+  #forward{
+    position: absolute; z-index: 100;
+  }
+  
+}
+
+
+
+/* posts */
+
+.posts {
+  list-style: none;
+  float: center;
+  margin-left: 150px;
+  padding: 0;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+  .user {
+    margin-top: 5em;
+    padding-top: 0;
+  }
+  .content {
+    display: block;
+    margin-left: 60px;
+    color: #6A5ACD;
+    img {
+      display: block;
+      padding: 5px 0;
+    }
+  }
+  .timestamp {
+    color: $gray-light;
+    display: block;
+    margin-left: 60px;
+  }
+  .gravatar {
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
+  }
+}
+
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 500px;
+  }
+}
+
+span.picture {
+  margin-top: 10px;
+  input {
+    border: 0;
+  }
+}
+
+
+  section.user_post_info {
+    margin-top: 20px 150px;
+    float: center;
+  }
+  section {
+    padding: 10px 0;
+    margin-top: 20px;
+    &:first-child {
+      border: 0;
+      padding-top: 0;
+    }
+    span {
+      display: block;
+      margin-bottom: 3px;
+      line-height: 1;
+    }
+    h1 {
+      font-size: 2em;
+      text-align: left;
+      letter-spacing: -1px;
+      margin-bottom: 3px;
+      margin-top: 20px;
+    }
+  }
+
+.gravatar {
+  float: middle;
+  margin-right: 10px;
+}
+
+.gravatar_edit {
+  margin-top: 15px;
+}
+
+section.post_form{
+  float: center;
+  display: block;
+}
+
+/* Tutor Information */
+
+.tutor_info {
+  margin-left: 300px;
+  font-size: 1.3em;
+}
+
+.meetings {
+  font-size: 1.5em;
+  margin-left: 300px;
+  padding: 20px;
+  list-style: none;
+
+  dropdown {
+    width: 400px;
+    dropdown-menu{
+      width: 400px;
+
+    }
+  }
+}
+
+.assessments {
+  font-size: 1.5em;
+  margin-left: 300px;
+  padding: 20px;
+  list-style: none;
+
+  dropdown {
+    width: 400px;
+    dropdown-menu{
+      width: 400px;
+
+    }
+  }
+}
+
+.members{
+  float: center;
+  margin-left: 300px;
+  h3 {
+    text-align: left;
+    color: black;
+  }
+  h2{
+    text-align: left;
+  }
+  button {
+    margin-left: 600px;
+  }
+}
+
+.student{
+  display: inline-block;
+  list-style: none;
+  padding: 10px;
+  float: center;
+}
+ .list{
+  list-style: none;
+}
+
+
+.search {
+  float: left;
+}
+
+ .solutions {
+  margin-left: 300px;
+
+ }
+
+
+/* calendar */
+
+#calendar table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#calendar td,
+#calendar th {
+  font-family: "Lucida Grande",arial,helvetica,sans-serif;
+  font-size: 10px;
+  padding: 6px;
+  border: 1px solid #999;
+}
+
+#calendar th {
+  background: #DDD;
+  color: #666;
+  text-align: center;
+  width: 14.2857142857143%;
+}
+
+#calendar td {
+  background: #FFF;
+  color: #777;
+  height: 80px;
+  vertical-align: top;
+  font-size: 16px;
+}
+
+#calendar .notmonth {
+  color: #CCC;
+}
+
+#calendar #month {
+  margin: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+#calendar #month a, #calendar #month a:hover {
+  text-decoration: none;
+  padding: 0 10px;
+  color: #999;
+}
+
+#calendar .today {
+  background-color: #D7F2FF;
+}
+
+#calendar ul {
+  margin: 0;
+  margin-top: 5px;
+  padding: 0;
+  list-style: none;
+}
+
+#calendar li {
+  margin: 0;
+  padding: 0;
+  font-size: 11px;
+  text-align: center;
+}
+
+.caret {
+  display: inline-block;
+  width: 1%;
+  height: 5%;
+  margin-left: 10px;
+  margin-right: 10px;
+  vertical-align: middle;
+  border-top: 4px solid #000000;
+  border-right: 4px solid transparent;
+  border-bottom: 0 dotted;
+  border-left: 4px solid transparent;
+  content: "";
+}
+ /* feedback form */
+.feedback {
+  float: center;
+  display: inline;
+}
+
+/* new form */
+
+inline{
+  display: inline;
+}
+
+
+.csv {
+  margin-left: 100px;
+}
+/* assessments */
+
+.destroy {
+  float: right;
+}
+
+.assessments{
+  float: center;
+}
+
+.meetings{
+  margin-left: 300px;
+  
+}
