@@ -10,7 +10,7 @@ Duration: 2.5 months
 
 University of Cape Town 2015
 
-The Tutor Organization and Planning App addresses the need for better management and organization of courses and course tutors. Additionally satisfying the desire for a central point of course communication and resource sharing among lecturers, teaching assistants and tutors, and more efficient management of student assessment sessions. A Ruby on Rails backed web application was selected to provide the functionality required.
+The Tutor Organization and Planning App addresses the need for better management and organization of courses and course tutors. Additionally satisfying the desire for a central point of course communication and resource sharing among lecturers, teaching assistants and tutors, and more efficient management of student assessment sessions. A [Ruby on Rails](http://rubyonrails.org/) backed web application was selected to provide the functionality required.
 
 ## Ruby version
 Ruby 2.2.2
@@ -19,13 +19,13 @@ Ruby 2.2.2
 See gemfile. 
 
 ## Database 
-PostgreSQL database was used. 
+[PostgreSQL](https://www.postgresql.org/) database was used. 
 
 ## Deployment
-Deployed with Heroku.
+Deployed with [Heroku](https://www.heroku.com/).
 
 ## Production 
-The web application was deployed with Heroku. Sendgrid was used to send out emails to users. Amazon S3 was used to store user uploaded files(images, exel documents, word documents and other file formats) via the Paperclip gem.
+The web application was deployed with [Heroku](https://www.heroku.com/). [Sendgrid](https://devcenter.heroku.com/articles/sendgrid) was used to send out emails to users. Amazon S3 was used to store user uploaded files(images, exel documents, word documents and other file formats) via the Paperclip gem ([Uploading Files to S3 in Ruby with Paperclip](https://devcenter.heroku.com/articles/paperclip-s3)).
 
 ## License
 
