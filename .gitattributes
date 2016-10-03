@@ -1,1 +1,4 @@
 *.rb linguist-language=Java
+
+special-vendored-path/* linguist-vendored
+JavaScript linguist-vendored=false
